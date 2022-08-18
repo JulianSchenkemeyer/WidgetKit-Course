@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B909213A28AE32EC00005756 /* MonthConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909213928AE32EC00005756 /* MonthConfig.swift */; };
+		B909213B28AE337C00005756 /* MonthConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909213928AE32EC00005756 /* MonthConfig.swift */; };
+		B909213C28AE338100005756 /* MonthConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909213928AE32EC00005756 /* MonthConfig.swift */; };
 		B9DEDF3328AD538700959FA3 /* MonthlyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEDF2328AD538500959FA3 /* MonthlyApp.swift */; };
 		B9DEDF3428AD538700959FA3 /* MonthlyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEDF2328AD538500959FA3 /* MonthlyApp.swift */; };
 		B9DEDF3528AD538700959FA3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEDF2428AD538500959FA3 /* ContentView.swift */; };
@@ -45,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B909213928AE32EC00005756 /* MonthConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthConfig.swift; sourceTree = "<group>"; };
 		B9DEDF2328AD538500959FA3 /* MonthlyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyApp.swift; sourceTree = "<group>"; };
 		B9DEDF2428AD538500959FA3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B9DEDF2528AD538700959FA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				B9DEDF4C28AD54A100959FA3 /* MonthlyWidget.swift */,
+				B909213928AE32EC00005756 /* MonthConfig.swift */,
 				B9DEDF4E28AD54A200959FA3 /* Assets.xcassets */,
 				B9DEDF5028AD54A200959FA3 /* Info.plist */,
 			);
@@ -274,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9DEDF3528AD538700959FA3 /* ContentView.swift in Sources */,
+				B909213A28AE32EC00005756 /* MonthConfig.swift in Sources */,
 				B9DEDF3328AD538700959FA3 /* MonthlyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9DEDF3628AD538700959FA3 /* ContentView.swift in Sources */,
+				B909213C28AE338100005756 /* MonthConfig.swift in Sources */,
 				B9DEDF3428AD538700959FA3 /* MonthlyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B909213B28AE337C00005756 /* MonthConfig.swift in Sources */,
 				B9DEDF4D28AD54A100959FA3 /* MonthlyWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -37,6 +37,12 @@ struct Provider: TimelineProvider {
 
 struct DayEntry: TimelineEntry {
 	let date: Date
+	let config: MonthConfig
+	
+	init(date: Date) {
+		self.date = date
+		self.config = MonthConfig.determineConfig(from: date)
+	}
 }
 
 struct MonthlyWidgetEntryView : View {
@@ -45,25 +51,23 @@ struct MonthlyWidgetEntryView : View {
 	var body: some View {
 		ZStack {
 			ContainerRelativeShape()
-				.fill(.gray)
+				.fill(entry.config.backgroundColor)
 			
 			VStack {
 				HStack(spacing: 4) {
-					Text("⛄️")
+					Text(entry.config.emojiText)
 						.font(.title)
 					Text(entry.date.weekdayDisplayFormat)
 						.font(.title3)
 						.fontWeight(.bold)
 						.minimumScaleFactor(0.6)
-						.foregroundColor(.black.opacity(0.65))
+						.foregroundColor(entry.config.weekdayTextColor)
 				}
 				
 				Text(entry.date.dayDisplayFormat)
 					.font(.system(size: 80, weight: .bold))
-					.foregroundColor(.white.opacity(0.7))
+					.foregroundColor(entry.config.dayTextColor)
 			}
-//			.padding(.top)
-//			.padding(.vertical)
 			.padding()
 		}
 	}
@@ -85,8 +89,16 @@ struct MonthlyWidget: Widget {
 
 struct MonthlyWidget_Previews: PreviewProvider {
 	static var previews: some View {
-		MonthlyWidgetEntryView(entry: DayEntry(date: Date()))
+		MonthlyWidgetEntryView(entry: DayEntry(date: dateToDisplay(month: 13, day: 13)))
 			.previewContext(WidgetPreviewContext(family: .systemSmall))
+	}
+	
+	static func dateToDisplay(month: Int, day: Int) -> Date {
+		let components = DateComponents(
+			calendar: Calendar.current,
+			month: month,
+			day: day)
+		return Calendar.current.date(from: components)!
 	}
 }
 
