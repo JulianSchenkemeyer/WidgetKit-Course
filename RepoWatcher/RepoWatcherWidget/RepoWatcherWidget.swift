@@ -10,11 +10,11 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> RepoEntry {
-		RepoEntry(date: Date(), repo: Repository.placeholder)
+		RepoEntry(date: Date(), repo: Repository.placeholder, avatarImageData: Data())
     }
 
     func getSnapshot(in context: Context, completion: @escaping (RepoEntry) -> ()) {
-		let entry = RepoEntry(date: Date(), repo: Repository.placeholder)
+		let entry = RepoEntry(date: Date(), repo: Repository.placeholder, avatarImageData: Data())
         completion(entry)
     }
 
@@ -23,7 +23,9 @@ struct Provider: TimelineProvider {
 			var entries: [RepoEntry] = []
 			do {
 				let repository = try await NetworkManager.shared.getRepository(from: RepoDummyUrl.swiftNews)
-				let newEntry = RepoEntry(date: .now, repo: repository)
+				let avatarImageData = await NetworkManager.shared.downloadImage(from: repository.owner.avatarUrl)
+				
+				let newEntry = RepoEntry(date: .now, repo: repository, avatarImageData: avatarImageData ?? Data())
 				entries.append(newEntry)
 			} catch {
 				print("❌ Error occurred during fetching new repo data - \(error.localizedDescription)")
@@ -41,6 +43,7 @@ struct Provider: TimelineProvider {
 struct RepoEntry: TimelineEntry {
     let date: Date
 	let repo: Repository
+	let avatarImageData: Data
 }
 
 //struct RepoWatcherWidgetEntryView : View {

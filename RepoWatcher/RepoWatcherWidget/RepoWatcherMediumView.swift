@@ -14,7 +14,7 @@ struct RepoWatcherMediumView: View {
 	var body: some View {
 		HStack {
 			VStack(alignment: .leading) {
-				AvaterRepoNameView(avatarUrl: entry.repo.owner.avatarUrl, repoName: entry.repo.name)
+				AvaterRepoNameView(avatarData: entry.avatarImageData, repoName: entry.repo.name)
 					.padding(.bottom, 5)
 				RepoMetricsView(repo: entry.repo)
 			}
@@ -28,14 +28,17 @@ struct RepoWatcherMediumView: View {
 }
 
 struct AvaterRepoNameView: View {
-	let avatarUrl: String
+	let avatarData: Data
 	let repoName: String
 	
 	
 	var body: some View {
 		HStack {
-			Circle()
+			Image(uiImage: UIImage(data: avatarData) ?? UIImage(named: "avatar")!)
+				.resizable()
 				.frame(width: 50, height: 50)
+				.clipShape(Circle())
+				
 			Text(repoName)
 				.font(.title2)
 				.fontWeight(.semibold)
@@ -112,7 +115,7 @@ struct DaysSinceView: View {
 
 struct RepoWatcherMediumView_Previews: PreviewProvider {
 	static var previews: some View {
-		RepoWatcherMediumView(entry: RepoEntry(date: Date(), repo: Repository.placeholder))
+		RepoWatcherMediumView(entry: RepoEntry(date: Date(), repo: Repository.placeholder, avatarImageData: Data()))
 			.previewContext(WidgetPreviewContext(family: .systemMedium))
 	}
 }
