@@ -19,18 +19,22 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [RepoEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-			let entry = RepoEntry(date: entryDate, repo: Repository.placeholder)
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+		Task {
+			var entries: [RepoEntry] = []
+			do {
+				let repository = try await NetworkManager.shared.getRepository(from: RepoDummyUrl.swiftNews)
+				let newEntry = RepoEntry(date: .now, repo: repository)
+				entries.append(newEntry)
+			} catch {
+				print("❌ Error occurred during fetching new repo data - \(error.localizedDescription)")
+			}
+			
+			
+			// Create the date for the next update in 12 hours
+			let nextUpdate = Date().addingTimeInterval(43200)
+			let timeline = Timeline(entries: entries, policy: .after(nextUpdate))
+			completion(timeline)
+		}
     }
 }
 
