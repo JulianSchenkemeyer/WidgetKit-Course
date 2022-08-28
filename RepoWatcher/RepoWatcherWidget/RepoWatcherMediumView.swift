@@ -9,18 +9,18 @@ import SwiftUI
 import WidgetKit
 
 struct RepoWatcherMediumView: View {
-	var entry: RepoEntry
+	var repository: Repository
 	
 	var body: some View {
 		HStack {
 			VStack(alignment: .leading) {
-				AvaterRepoNameView(avatarData: entry.avatarImageData, repoName: entry.repo.name)
+				AvaterRepoNameView(avatarData: repository.avatarData, repoName: repository.name)
 					.padding(.bottom, 5)
-				RepoMetricsView(repo: entry.repo)
+				RepoMetricsView(repo: repository)
 			}
 			Spacer()
 			VStack {
-				DaysSinceView(dateString: entry.repo.pushedAt)
+				DaysSinceView(dateString: repository.pushedAt)
 			}
 		}
 		.padding()
@@ -115,7 +115,7 @@ struct DaysSinceView: View {
 
 struct RepoWatcherMediumView_Previews: PreviewProvider {
 	static var previews: some View {
-		RepoWatcherMediumView(entry: RepoEntry(date: Date(), repo: Repository.placeholder, avatarImageData: Data()))
+		RepoWatcherMediumView(repository: Repository.placeholder)
 			.previewContext(WidgetPreviewContext(family: .systemMedium))
 	}
 }
