@@ -26,6 +26,9 @@
 		B9AA534128BB9D7A00F7FC38 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AA533F28BB9D7A00F7FC38 /* NetworkManager.swift */; };
 		B9AA534228BB9D7A00F7FC38 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AA533F28BB9D7A00F7FC38 /* NetworkManager.swift */; };
 		B9E022FB28BBD7F500D385F7 /* RepoWatcherLargeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E022FA28BBD7F500D385F7 /* RepoWatcherLargeView.swift */; };
+		B9E022FD28BBDB8000D385F7 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E022FC28BBDB8000D385F7 /* MockData.swift */; };
+		B9E022FE28BBDB8000D385F7 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E022FC28BBDB8000D385F7 /* MockData.swift */; };
+		B9E022FF28BBDB8000D385F7 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E022FC28BBDB8000D385F7 /* MockData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,7 @@
 		B9AA533B28B26EE400F7FC38 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		B9AA533F28BB9D7A00F7FC38 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B9E022FA28BBD7F500D385F7 /* RepoWatcherLargeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoWatcherLargeView.swift; sourceTree = "<group>"; };
+		B9E022FC28BBDB8000D385F7 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 				B909214528AE4F0000005756 /* Assets.xcassets */,
 				B9AA533B28B26EE400F7FC38 /* Repository.swift */,
 				B9AA533F28BB9D7A00F7FC38 /* NetworkManager.swift */,
+				B9E022FC28BBDB8000D385F7 /* MockData.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 				B909215528AE4F0000005756 /* ContentView.swift in Sources */,
 				B909215328AE4F0000005756 /* RepoWatcherApp.swift in Sources */,
 				B9AA533C28B26EE400F7FC38 /* Repository.swift in Sources */,
+				B9E022FD28BBDB8000D385F7 /* MockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +310,7 @@
 				B909215628AE4F0000005756 /* ContentView.swift in Sources */,
 				B909215428AE4F0000005756 /* RepoWatcherApp.swift in Sources */,
 				B9AA533D28B26EE400F7FC38 /* Repository.swift in Sources */,
+				B9E022FE28BBDB8000D385F7 /* MockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9AA534228BB9D7A00F7FC38 /* NetworkManager.swift in Sources */,
+				B9E022FF28BBDB8000D385F7 /* MockData.swift in Sources */,
 				B909217928B2524100005756 /* RepoWatcherMediumView.swift in Sources */,
 				B909216D28AE4F3C00005756 /* RepoWatcherWidget.swift in Sources */,
 				B9AA533E28B26EE400F7FC38 /* Repository.swift in Sources */,
