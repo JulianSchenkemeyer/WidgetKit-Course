@@ -10,23 +10,38 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> RepoEntry {
-		RepoEntry(date: Date(), repo: Repository.placeholder)
+		RepoEntry(date: Date(), repo: MockData.repoOne,bottomRepo: MockData.repoTwo)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (RepoEntry) -> ()) {
-		let entry = RepoEntry(date: Date(), repo: Repository.placeholder)
+		let entry = RepoEntry(date: Date(), repo: MockData.repoOne, bottomRepo: MockData.repoTwo)
         completion(entry)
     }
+	
+	func getRepoAndAvatar(for urlString: String) async throws-> Repository {
+		var repository = try await NetworkManager.shared.getRepository(from: urlString)
+		let avatarImageData = await NetworkManager.shared.downloadImage(from: repository.owner.avatarUrl)
+		repository.avatarData = avatarImageData ?? Data()
+		
+		return repository
+		
+	}
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
 		Task {
 			var entries: [RepoEntry] = []
+			// Get top repository
 			do {
-				var repository = try await NetworkManager.shared.getRepository(from: RepoDummyUrl.swiftNews)
-				let avatarImageData = await NetworkManager.shared.downloadImage(from: repository.owner.avatarUrl)
-				repository.avatarData = avatarImageData ?? Data()
+				let repo = try await getRepoAndAvatar(for: RepoDummyUrl.swiftNews)
 				
-				let newEntry = RepoEntry(date: .now, repo: repository)
+				// Get bottom repo if in large widget
+				var bottomRepo: Repository?
+				if context.family == .systemLarge {
+					bottomRepo = try await getRepoAndAvatar(for: RepoDummyUrl.publish)
+				}
+				
+				// Create new entry for timeline
+				let newEntry = RepoEntry(date: .now, repo: repo, bottomRepo: bottomRepo)
 				entries.append(newEntry)
 			} catch {
 				print("❌ Error occurred during fetching new repo data - \(error.localizedDescription)")
@@ -44,6 +59,7 @@ struct Provider: TimelineProvider {
 struct RepoEntry: TimelineEntry {
     let date: Date
 	let repo: Repository
+	let bottomRepo: Repository?
 }
 
 struct RepoWatcherWidgetEntryView : View {
@@ -55,7 +71,7 @@ struct RepoWatcherWidgetEntryView : View {
 		case .systemMedium:
 			RepoWatcherMediumView(repository: entry.repo)
 		case .systemLarge:
-			RepoWatcherLargeView()
+			RepoWatcherLargeView(repo: entry.repo, bottomRepo: entry.bottomRepo)
 		case .systemExtraLarge, .systemSmall:
 			EmptyView()
 		@unknown default:
@@ -80,7 +96,7 @@ struct RepoWatcherWidget: Widget {
 
 struct RepoWatcherWidget_Previews: PreviewProvider {
     static var previews: some View {
-		RepoWatcherWidgetEntryView(entry: RepoEntry(date: .now, repo: Repository.placeholder))
+		RepoWatcherWidgetEntryView(entry: RepoEntry(date: .now, repo: MockData.repoOne, bottomRepo: MockData.repoTwo))
 			.previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

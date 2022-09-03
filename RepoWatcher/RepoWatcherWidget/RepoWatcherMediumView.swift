@@ -115,7 +115,7 @@ struct DaysSinceView: View {
 
 struct RepoWatcherMediumView_Previews: PreviewProvider {
 	static var previews: some View {
-		RepoWatcherMediumView(repository: Repository.placeholder)
+		RepoWatcherMediumView(repository: MockData.repoOne)
 			.previewContext(WidgetPreviewContext(family: .systemMedium))
 	}
 }
