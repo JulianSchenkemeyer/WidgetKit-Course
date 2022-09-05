@@ -8,13 +8,13 @@
 import WidgetKit
 import SwiftUI
 
-struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> RepoEntry {
-		RepoEntry(date: Date(), repo: MockData.repoOne,bottomRepo: MockData.repoTwo)
+struct CompactRepoProvider: TimelineProvider {
+    func placeholder(in context: Context) -> CompactRepoEntry {
+		CompactRepoEntry(date: Date(), repo: MockData.repoOne,bottomRepo: MockData.repoTwo)
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (RepoEntry) -> ()) {
-		let entry = RepoEntry(date: Date(), repo: MockData.repoOne, bottomRepo: MockData.repoTwo)
+    func getSnapshot(in context: Context, completion: @escaping (CompactRepoEntry) -> ()) {
+		let entry = CompactRepoEntry(date: Date(), repo: MockData.repoOne, bottomRepo: MockData.repoTwo)
         completion(entry)
     }
 	
@@ -27,9 +27,9 @@ struct Provider: TimelineProvider {
 		
 	}
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<CompactRepoEntry>) -> ()) {
 		Task {
-			var entries: [RepoEntry] = []
+			var entries: [CompactRepoEntry] = []
 			// Get top repository
 			do {
 				let repo = try await getRepoAndAvatar(for: RepoDummyUrl.swiftNews)
@@ -41,7 +41,7 @@ struct Provider: TimelineProvider {
 				}
 				
 				// Create new entry for timeline
-				let newEntry = RepoEntry(date: .now, repo: repo, bottomRepo: bottomRepo)
+				let newEntry = CompactRepoEntry(date: .now, repo: repo, bottomRepo: bottomRepo)
 				entries.append(newEntry)
 			} catch {
 				print("❌ Error occurred during fetching new repo data - \(error.localizedDescription)")
@@ -56,15 +56,15 @@ struct Provider: TimelineProvider {
     }
 }
 
-struct RepoEntry: TimelineEntry {
+struct CompactRepoEntry: TimelineEntry {
     let date: Date
 	let repo: Repository
 	let bottomRepo: Repository?
 }
 
-struct RepoWatcherWidgetEntryView : View {
+struct CompactRepoEntryView : View {
 	@Environment(\.widgetFamily) var family
-    var entry: Provider.Entry
+    var entry: CompactRepoProvider.Entry
 
     var body: some View {
 		switch family {
@@ -80,13 +80,12 @@ struct RepoWatcherWidgetEntryView : View {
     }
 }
 
-@main
-struct RepoWatcherWidget: Widget {
-    let kind: String = "RepoWatcherWidget"
+struct CompactRepoWidget: Widget {
+    let kind: String = "CompactRepoWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-			RepoWatcherWidgetEntryView(entry: entry)
+        StaticConfiguration(kind: kind, provider: CompactRepoProvider()) { entry in
+			CompactRepoEntryView(entry: entry)
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
@@ -94,9 +93,9 @@ struct RepoWatcherWidget: Widget {
     }
 }
 
-struct RepoWatcherWidget_Previews: PreviewProvider {
+struct CompactRepoWidget_Previews: PreviewProvider {
     static var previews: some View {
-		RepoWatcherWidgetEntryView(entry: RepoEntry(date: .now, repo: MockData.repoOne, bottomRepo: MockData.repoTwo))
+		CompactRepoEntryView(entry: CompactRepoEntry(date: .now, repo: MockData.repoOne, bottomRepo: MockData.repoTwo))
 			.previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

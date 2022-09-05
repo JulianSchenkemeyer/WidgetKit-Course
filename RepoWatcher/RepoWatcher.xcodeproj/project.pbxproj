@@ -15,16 +15,18 @@
 		B909215828AE4F0000005756 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B909214528AE4F0000005756 /* Assets.xcassets */; };
 		B909216828AE4F3C00005756 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B909216728AE4F3C00005756 /* WidgetKit.framework */; };
 		B909216A28AE4F3C00005756 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B909216928AE4F3C00005756 /* SwiftUI.framework */; };
-		B909216D28AE4F3C00005756 /* RepoWatcherWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909216C28AE4F3C00005756 /* RepoWatcherWidget.swift */; };
+		B909216D28AE4F3C00005756 /* CompactRepoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909216C28AE4F3C00005756 /* CompactRepoWidget.swift */; };
 		B909216F28AE4F3D00005756 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B909216E28AE4F3D00005756 /* Assets.xcassets */; };
 		B909217328AE4F3D00005756 /* RepoWatcherWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B909216528AE4F3C00005756 /* RepoWatcherWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B909217928B2524100005756 /* RepoWatcherMediumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909217828B2524100005756 /* RepoWatcherMediumView.swift */; };
+		B918A86E28C3DF2900599CEA /* ContributorWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B918A86D28C3DF2900599CEA /* ContributorWidget.swift */; };
 		B9AA533C28B26EE400F7FC38 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AA533B28B26EE400F7FC38 /* Repository.swift */; };
 		B9AA533D28B26EE400F7FC38 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AA533B28B26EE400F7FC38 /* Repository.swift */; };
 		B9AA533E28B26EE400F7FC38 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AA533B28B26EE400F7FC38 /* Repository.swift */; };
 		B9AA534028BB9D7A00F7FC38 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AA533F28BB9D7A00F7FC38 /* NetworkManager.swift */; };
 		B9AA534128BB9D7A00F7FC38 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AA533F28BB9D7A00F7FC38 /* NetworkManager.swift */; };
 		B9AA534228BB9D7A00F7FC38 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AA533F28BB9D7A00F7FC38 /* NetworkManager.swift */; };
+		B9C772AD28C3BE38008C5EC5 /* WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C772AC28C3BE38008C5EC5 /* WidgetBundle.swift */; };
 		B9E022FB28BBD7F500D385F7 /* RepoWatcherLargeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E022FA28BBD7F500D385F7 /* RepoWatcherLargeView.swift */; };
 		B9E022FD28BBDB8000D385F7 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E022FC28BBDB8000D385F7 /* MockData.swift */; };
 		B9E022FE28BBDB8000D385F7 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E022FC28BBDB8000D385F7 /* MockData.swift */; };
@@ -65,12 +67,14 @@
 		B909216528AE4F3C00005756 /* RepoWatcherWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RepoWatcherWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B909216728AE4F3C00005756 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B909216928AE4F3C00005756 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		B909216C28AE4F3C00005756 /* RepoWatcherWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoWatcherWidget.swift; sourceTree = "<group>"; };
+		B909216C28AE4F3C00005756 /* CompactRepoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactRepoWidget.swift; sourceTree = "<group>"; };
 		B909216E28AE4F3D00005756 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B909217028AE4F3D00005756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B909217828B2524100005756 /* RepoWatcherMediumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoWatcherMediumView.swift; sourceTree = "<group>"; };
+		B918A86D28C3DF2900599CEA /* ContributorWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorWidget.swift; sourceTree = "<group>"; };
 		B9AA533B28B26EE400F7FC38 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		B9AA533F28BB9D7A00F7FC38 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B9C772AC28C3BE38008C5EC5 /* WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBundle.swift; sourceTree = "<group>"; };
 		B9E022FA28BBD7F500D385F7 /* RepoWatcherLargeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoWatcherLargeView.swift; sourceTree = "<group>"; };
 		B9E022FC28BBDB8000D385F7 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,13 +160,23 @@
 		B909216B28AE4F3C00005756 /* RepoWatcherWidget */ = {
 			isa = PBXGroup;
 			children = (
-				B909216C28AE4F3C00005756 /* RepoWatcherWidget.swift */,
+				B9C772AE28C3BFF0008C5EC5 /* CompactRepoWidget */,
 				B909216E28AE4F3D00005756 /* Assets.xcassets */,
 				B909217028AE4F3D00005756 /* Info.plist */,
+				B9C772AC28C3BE38008C5EC5 /* WidgetBundle.swift */,
+				B918A86D28C3DF2900599CEA /* ContributorWidget.swift */,
+			);
+			path = RepoWatcherWidget;
+			sourceTree = "<group>";
+		};
+		B9C772AE28C3BFF0008C5EC5 /* CompactRepoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B909216C28AE4F3C00005756 /* CompactRepoWidget.swift */,
 				B909217828B2524100005756 /* RepoWatcherMediumView.swift */,
 				B9E022FA28BBD7F500D385F7 /* RepoWatcherLargeView.swift */,
 			);
-			path = RepoWatcherWidget;
+			path = CompactRepoWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,9 +333,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9AA534228BB9D7A00F7FC38 /* NetworkManager.swift in Sources */,
+				B918A86E28C3DF2900599CEA /* ContributorWidget.swift in Sources */,
 				B9E022FF28BBDB8000D385F7 /* MockData.swift in Sources */,
 				B909217928B2524100005756 /* RepoWatcherMediumView.swift in Sources */,
-				B909216D28AE4F3C00005756 /* RepoWatcherWidget.swift in Sources */,
+				B909216D28AE4F3C00005756 /* CompactRepoWidget.swift in Sources */,
+				B9C772AD28C3BE38008C5EC5 /* WidgetBundle.swift in Sources */,
 				B9AA533E28B26EE400F7FC38 /* Repository.swift in Sources */,
 				B9E022FB28BBD7F500D385F7 /* RepoWatcherLargeView.swift in Sources */,
 			);
