@@ -14,6 +14,7 @@
 		B9C506F628C674C2009C1096 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C506F528C674C2009C1096 /* Persistence.swift */; };
 		B9C506F928C674C2009C1096 /* SwiftCal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B9C506F728C674C2009C1096 /* SwiftCal.xcdatamodeld */; };
 		B9D329DF28CCE54A00856877 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D329DE28CCE54A00856877 /* Date+Ext.swift */; };
+		B9D329E128CCFAFC00856877 /* StreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D329E028CCFAFC00856877 /* StreakView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		B9C506F528C674C2009C1096 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B9C506F828C674C2009C1096 /* SwiftCal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftCal.xcdatamodel; sourceTree = "<group>"; };
 		B9D329DE28CCE54A00856877 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		B9D329E028CCFAFC00856877 /* StreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				B9C506F728C674C2009C1096 /* SwiftCal.xcdatamodeld */,
 				B9C506F228C674C2009C1096 /* Preview Content */,
 				B9D329DE28CCE54A00856877 /* Date+Ext.swift */,
+				B9D329E028CCFAFC00856877 /* StreakView.swift */,
 			);
 			path = SwiftCal;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9D329E128CCFAFC00856877 /* StreakView.swift in Sources */,
 				B9C506F628C674C2009C1096 /* Persistence.swift in Sources */,
 				B9C506EF28C674C0009C1096 /* CalendarView.swift in Sources */,
 				B9C506F928C674C2009C1096 /* SwiftCal.xcdatamodeld in Sources */,
