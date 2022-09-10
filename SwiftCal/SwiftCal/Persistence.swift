@@ -9,6 +9,17 @@ import CoreData
 
 struct PersistenceController {
     static let shared = PersistenceController()
+	
+	let databaseName = "SwiftCal.sqlite"
+	var oldStoreUrl: URL {
+		let directory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+		return directory.appendingPathComponent(databaseName)
+	}
+	
+	var sharedStoreUrl: URL {
+		let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.jschenkemeyer.demo.SwiftCal")!
+		return container.appendingPathComponent(databaseName)
+	}
 
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
@@ -37,7 +48,9 @@ struct PersistenceController {
         container = NSPersistentContainer(name: "SwiftCal")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
-        }
+		} else if !FileManager.default.fileExists(atPath: oldStoreUrl.path) {
+			container.persistentStoreDescriptions.first!.url = sharedStoreUrl
+		}
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -54,6 +67,29 @@ struct PersistenceController {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+		migrateStore(for: container)
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
+	
+	func migrateStore(for container: NSPersistentContainer) {
+		let coordinator = container.persistentStoreCoordinator
+		
+		// Prevent migrating the old store twice
+		guard let oldStore = coordinator.persistentStore(for: oldStoreUrl) else { return }
+		print("🏎 starting migration")
+		
+		do {
+			let _ = try coordinator.migratePersistentStore(oldStore, to: sharedStoreUrl, type: .sqlite)
+			print("🏁")
+		} catch {
+			fatalError("Unable to migrate to the shared store")
+		}
+		
+		do {
+			try FileManager.default.removeItem(at: oldStoreUrl)
+			print("🗑")
+		} catch {
+			fatalError("Unable to remove the old store")
+		}
+	}
 }
