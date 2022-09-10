@@ -47,6 +47,15 @@ struct CalendarView: View {
 									Circle()
 										.foregroundColor(.teal.opacity(day.didStudy ? 0.3 : 0.0))
 								)
+								.onTapGesture {
+									day.didStudy.toggle()
+									do {
+										try viewContext.save()
+										print("✅ change didStudy to \(day.didStudy)")
+									} catch {
+										print("❌ changing didStudy failed")
+									}
+								}
 						}
 					}
 				}
