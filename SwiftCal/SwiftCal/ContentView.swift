@@ -16,19 +16,38 @@ struct ContentView: View {
         animation: .default)
     private var days: FetchedResults<Day>
 
+	let daysOfWeek = ["M", "T", "W", "T", "F", "S", "S"]
+	
     var body: some View {
         NavigationView {
-            List {
-                ForEach(days) { day in
-//                    NavigationLink {
-//                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-//                    } label: {
-//                        Text(item.timestamp!, formatter: itemFormatter)
-//                    }
-					Text(day.date!.formatted())
-					Text(day.didStudy.description)
-                }
-            }
+			VStack {
+				HStack {
+					ForEach(daysOfWeek, id: \.self) { dayOfWeek in
+						Text(dayOfWeek)
+							.fontWeight(.black)
+							.foregroundColor(.teal)
+							.frame(maxWidth: .infinity)
+					}
+				}
+				
+				LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7)) {
+					
+					ForEach(days) { day in
+						Text(day.date!.formatted(.dateTime.day()))
+							.fontWeight(.bold)
+							.foregroundColor(day.didStudy ? .teal : .secondary)
+							.frame(maxWidth: .infinity, minHeight: 40)
+							.background(
+								Circle()
+									.foregroundColor(.teal.opacity(day.didStudy ? 0.3 : 0.0))
+							)
+					}
+				}
+				
+				Spacer()
+			}
+			.padding()
+			.navigationTitle(Date().formatted(.dateTime.month(.wide)))
         }
     }
 }
