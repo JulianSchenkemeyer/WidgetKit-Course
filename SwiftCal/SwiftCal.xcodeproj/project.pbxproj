@@ -22,6 +22,9 @@
 		B9D329F428CD02DC00856877 /* SwiftCalWidgetExtensionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B9D329E628CD02DA00856877 /* SwiftCalWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B9D329FC28CDC34B00856877 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D329FB28CDC34B00856877 /* CalendarHeaderView.swift */; };
 		B9D329FD28CDC39300856877 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D329FB28CDC34B00856877 /* CalendarHeaderView.swift */; };
+		B9D329FE28CDC6B400856877 /* SwiftCal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B9C506F728C674C2009C1096 /* SwiftCal.xcdatamodeld */; };
+		B9D32A0028CDC7F500856877 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D329DE28CCE54A00856877 /* Date+Ext.swift */; };
+		B9D32A0128CDC8A600856877 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C506F528C674C2009C1096 /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,6 +273,9 @@
 			files = (
 				B9D329EE28CD02DA00856877 /* SwiftCalWidgetExtension.swift in Sources */,
 				B9D329FD28CDC39300856877 /* CalendarHeaderView.swift in Sources */,
+				B9D329FE28CDC6B400856877 /* SwiftCal.xcdatamodeld in Sources */,
+				B9D32A0028CDC7F500856877 /* Date+Ext.swift in Sources */,
+				B9D32A0128CDC8A600856877 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

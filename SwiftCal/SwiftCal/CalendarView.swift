@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import WidgetKit
 
 struct CalendarView: View {
 	@Environment(\.managedObjectContext) private var viewContext
@@ -43,6 +44,9 @@ struct CalendarView: View {
 									day.didStudy.toggle()
 									do {
 										try viewContext.save()
+										// Manually trigger an update of the widget timeline
+										WidgetCenter.shared.reloadTimelines(ofKind: "SwiftCalWidget")
+										
 										print("✅ change didStudy to \(day.didStudy)")
 									} catch {
 										print("❌ changing didStudy failed")
