@@ -62,38 +62,42 @@ struct SwiftCalWidgetExtensionEntryView : View {
 	
 	var body: some View {
 		HStack {
-			VStack {
-				Text("\(calculateStreakValue())")
-					.font(.system(size: 70, weight: .bold, design: .rounded))
-					.foregroundColor(.teal)
-				Text("Day Streak")
-					.font(.caption)
-					.foregroundColor(.secondary)
+			Link(destination: URL(string: "streaks")!) {
+				VStack {
+					Text("\(calculateStreakValue())")
+						.font(.system(size: 70, weight: .bold, design: .rounded))
+						.foregroundColor(.teal)
+					Text("Day Streak")
+						.font(.caption)
+						.foregroundColor(.secondary)
+				}
 			}
-			VStack {
-				CalendarHeaderView(font: .caption)
-				
-				LazyVGrid(columns: columns, spacing: 7) {
-					ForEach(entry.days) { day in
-						if day.date!.monthInt != Date().monthInt {
-							Text("")
-						} else {
-							Text(day.date!.formatted(.dateTime.day()))
-								.font(.caption2)
-								.bold()
-								.frame(maxWidth: .infinity)
-								.foregroundColor(day.didStudy ? .teal : .secondary)
-								.background(
-									Circle()
-										.foregroundColor(.teal.opacity(day.didStudy ? 0.3 : 0.0))
-										.scaleEffect(1.4)
-									
-								)
+			
+			Link(destination: URL(string: "calendar")!) {
+				VStack {
+					CalendarHeaderView(font: .caption)
+					
+					LazyVGrid(columns: columns, spacing: 7) {
+						ForEach(entry.days) { day in
+							if day.date!.monthInt != Date().monthInt {
+								Text("")
+							} else {
+								Text(day.date!.formatted(.dateTime.day()))
+									.font(.caption2)
+									.bold()
+									.frame(maxWidth: .infinity)
+									.foregroundColor(day.didStudy ? .teal : .secondary)
+									.background(
+										Circle()
+											.foregroundColor(.teal.opacity(day.didStudy ? 0.3 : 0.0))
+											.scaleEffect(1.4)
+									)
+							}
 						}
 					}
 				}
+				.padding(.leading, 6)
 			}
-			.padding(.leading, 6)
 		}
 		.padding()
 	}
