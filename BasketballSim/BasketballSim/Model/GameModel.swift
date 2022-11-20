@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ActivityKit
 
 final class GameModel: ObservableObject, GameSimulatorDelegate {
 
@@ -15,18 +16,35 @@ final class GameModel: ObservableObject, GameSimulatorDelegate {
                                           lastAction: "")
     let simulator = GameSimulator()
 
+	var liveActivity: Activity<GameAttributes>? = nil
+
     init() {
         simulator.delegate = self
     }
 
+	func startLiveActivity() {
+		let attributes = GameAttributes(homeTeam: "warriors", awayTeam: "bulls")
+		let currentGameState = GameAttributes.ContentState(gameState: gameState)
+
+		do {
+			liveActivity = try Activity.request(attributes: attributes, contentState: currentGameState)
+		} catch {
+			print("❌ Failed to start live activity. \(error.localizedDescription)")
+		}
+	}
+
     func didUpdate(gameState: GameState) {
         self.gameState = gameState
+
+		Task {
+			await liveActivity?.update(using: .init(gameState: gameState))
+		}
     }
 
     func didCompleteGame() {
 
+		Task {
+			await liveActivity?.end(using: .init(gameState: simulator.endGame()), dismissalPolicy: .immediate)
+		}
     }
-
-
-    // Live Activity code goes here
 }

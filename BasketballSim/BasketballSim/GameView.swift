@@ -55,6 +55,7 @@ struct GameView: View {
 
                 Button("Start Live Activity") {
                     // Launch live activity
+					model.startLiveActivity()
                 }
                 .buttonStyle(ActionButton(color: .mint))
 

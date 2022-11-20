@@ -61,6 +61,7 @@ final class GameSimulator {
 
     func end() {
         delegate.didUpdate(gameState: endGame())
+		delegate.didCompleteGame()
     }
 
     func reset() {

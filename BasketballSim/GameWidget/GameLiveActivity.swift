@@ -9,47 +9,64 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
-struct GameAttributes: ActivityAttributes {
-    public struct ContentState: Codable, Hashable {
-        // Dynamic stateful properties about your activity go here!
-		var gameState: GameState
-    }
-
-    // Fixed non-changing properties about your activity go here!
-	var homeTeam: String
-	var awayTeam: String
-}
-
 struct GameLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: GameAttributes.self) { context in
             // Lock screen/banner UI goes here
-            VStack {
-                Text("Hello")
-            }
-            .activityBackgroundTint(Color.cyan)
-            .activitySystemActionForegroundColor(Color.black)
+            LiveActivity()
             
         } dynamicIsland: { context in
             DynamicIsland {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    Text("Leading")
+					HStack {
+						Image("warriors")
+							.teamLogoModifier(frame: 40)
+
+						Text("100")
+							.font(.title)
+							.fontWeight(.semibold)
+					}
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("Trailing")
+					HStack {
+						Text("100")
+							.font(.title)
+							.fontWeight(.semibold)
+
+						Image("bulls")
+							.teamLogoModifier(frame: 40)
+					}
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom")
-                    // more content
+					HStack {
+						Image("warriors")
+							.teamLogoModifier(frame: 20)
+
+						Text("S. Curry drains a 3")
+					}
                 }
             } compactLeading: {
-                Text("L")
+				HStack {
+					Image("warriors")
+						.teamLogoModifier()
+
+					Text("100")
+						.fontWeight(.semibold)
+				}
             } compactTrailing: {
-                Text("T")
+				HStack {
+					Text("100")
+						.fontWeight(.semibold)
+
+					Image("bulls")
+						.teamLogoModifier()
+				}
             } minimal: {
-                Text("Min")
+				// Logo of the winning team
+				Image("warriors")
+					.teamLogoModifier()
             }
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)
