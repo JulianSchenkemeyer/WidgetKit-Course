@@ -12,11 +12,12 @@ import SwiftUI
 struct GameAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
-        var value: Int
+		var gameState: GameState
     }
 
     // Fixed non-changing properties about your activity go here!
-    var name: String
+	var homeTeam: String
+	var awayTeam: String
 }
 
 struct GameLiveActivity: Widget {
